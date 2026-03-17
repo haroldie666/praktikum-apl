@@ -61,8 +61,8 @@ string password(string pesan) {
     return pass;
 }
 
-bool login(user users[], int jumlahUser, user &userAktif, int kesempatan) { 
-    if (kesempatan == 0) {
+bool login(user users[], int jumlahUser, user &userAktif, int percobaan) { 
+    if (percobaan == 0) {
         cout << "\nMaaf, kesempatan Anda telah habis" << endl;
         return false;
     }
@@ -84,11 +84,11 @@ bool login(user users[], int jumlahUser, user &userAktif, int kesempatan) {
     }
     
     cout << "\nSayang sekali, login gagal" << endl;
-    cout << "Sisa percobaan Anda adalah: " << kesempatan - 1;
+    cout << "Sisa percobaan Anda adalah: " << percobaan - 1;
     cout << "\nTekan enter untuk mencoba lagi...";
     cin.get();
     
-    return login(users, jumlahUser, userAktif, kesempatan - 1);
+    return login(users, jumlahUser, userAktif, percobaan - 1);
 }
 
 void registerr(user users[], int &jumlahUser, int maxUser) {
@@ -105,7 +105,7 @@ void registerr(user users[], int &jumlahUser, int maxUser) {
         getline(cin, usnBaru);
         
         if (usnBaru.empty()) {
-            cout << "Username tidak boleh kosong!\n";
+            cout << "Username tidak boleh kosong\n";
             continue;
         }
         
@@ -344,7 +344,7 @@ void createAdmin(produk produkList[], int &jumlahProduk, int maxProduk) {
         if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Silakan masukkan angka saja!\n";
+            cout << "Silakan masukkan angka saja\n";
         } else if (produkList[jumlahProduk].kadaluarsa.tahun <= 0) {
             cout << "Tahun tidak valid, silakan coba lagi\n";
         } else {
@@ -368,9 +368,8 @@ void editAdmin(produk produkList[], int jumlahProduk) {
     readAdmin(produkList, jumlahProduk, true);
     
     int target;
-    int idx = -1; // Menyimpan indeks dari hasil pencarian
-    
-    // Perulangan untuk terus meminta input sampai ID yang valid dimasukkan
+    int idx = -1; 
+
     while (true) {
         cout << "\nMasukkan ID produk yang akan diubah : ";
         if (cin.peek() == '\n') {
@@ -392,7 +391,7 @@ void editAdmin(produk produkList[], int jumlahProduk) {
             if (idx == -1) {
                 cout << "ID produk tidak ada, silakan masukkan ID yang tersedia\n";
             } else {
-                break; // Jika ID benar dan ditemukan, keluar dari perulangan
+                break; 
             }
         }
     }
@@ -529,7 +528,7 @@ void editAdmin(produk produkList[], int jumlahProduk) {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Silakan masukkan angka saja\n";
         } else if (tglBaru <= 0 || tglBaru > 31) {
-            cout << "Tanggal harus antara 1-31!\n";
+            cout << "Tanggal harus antara 1-31\n";
         } else {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             produkList[idx].kadaluarsa.tanggal = tglBaru;
@@ -552,7 +551,7 @@ void editAdmin(produk produkList[], int jumlahProduk) {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Silakan masukkan angka saja\n";
         } else if (blnBaru <= 0 || blnBaru > 12) {
-            cout << "Bulan harus antara 1-12!\n";
+            cout << "Bulan harus antara 1-12\n";
         } else {
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             produkList[idx].kadaluarsa.bulan = blnBaru;
@@ -598,8 +597,7 @@ void deleteAdmin(produk produkList[], int &jumlahProduk) {
     
     int targetId;
     int idx = -1;
-    
-    // Logika pengulangan pencarian yang sama diterapkan pada fitur hapus
+
     while (true) {
         cout << "\nMasukkan ID produk yang akan dihapus : ";
         if (cin.peek() == '\n') {
@@ -810,7 +808,7 @@ int main() {
             if (cin.fail()) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Input tidak valid! Harap masukkan angka saja.\n";
+                cout << "Silakan masukkan angka saja.\n";
             } else {
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 break;
