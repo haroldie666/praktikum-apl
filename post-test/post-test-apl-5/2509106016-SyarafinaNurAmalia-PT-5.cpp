@@ -1,7 +1,7 @@
 #include <iostream>
 #include <conio.h>
 #include <limits>
-#include <algorithm> // Ditambahkan untuk fungsi swap()
+#include <algorithm> 
 #include <tabulate/table.hpp>
 
 using namespace std;
