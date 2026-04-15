@@ -102,7 +102,8 @@ int main() {
                 cout << "Silakan masukkan pilihan (hanya angka)\n"; 
                 continue; }
             isAngka = true; 
-                for (char c : tempInput) { if (!isdigit(c)) { isAngka = false; break; } }
+                for (char c : tempInput) { if (!isdigit(c)) { isAngka = false; 
+                    break; } }
                     if (isAngka) { menuUtama = stoi(tempInput); 
                         break; }
                 cout << "Silakan masukkan pilihan (hanya angka)\n";
